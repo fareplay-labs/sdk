@@ -1,0 +1,39 @@
+# Source files
+src/
+*.ts
+!*.d.ts
+
+# Tests
+**/*.test.ts
+**/*.spec.ts
+__tests__/
+tests/
+
+# Config files
+tsconfig.json
+.eslintrc.*
+.prettierrc.*
+
+# Development
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# CI/CD
+.github/
+.circleci/
+
+# Documentation
+docs/
+examples/
+
+# Misc
+.env
+.env.*
+*.log
+coverage/
+.nyc_output
+
