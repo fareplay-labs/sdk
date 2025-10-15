@@ -5,7 +5,7 @@
 /**
  * Default Discovery Service URL
  */
-export const DEFAULT_DISCOVERY_URL = 'https://discovery.fareplay.io';
+export const DEFAULT_DISCOVERY_URL = 'https://api.discover.fareplay.io';
 
 /**
  * Default heartbeat interval (in milliseconds)

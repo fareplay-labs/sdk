@@ -28,7 +28,7 @@ bun add @fareplay/sdk
 import { FareDiscoveryClient } from '@fareplay/sdk';
 
 const client = new FareDiscoveryClient({
-  baseUrl: 'https://discovery.fareplay.io',
+  baseUrl: 'https://api.discover.fareplay.io',
 });
 
 // Register a casino
@@ -52,7 +52,7 @@ const casinos = await client.getCasinos();
 import { FareCasinoClient } from '@fareplay/sdk';
 
 const client = new FareCasinoClient({
-  baseUrl: 'https://discovery.fareplay.io',
+  baseUrl: 'https://api.discover.fareplay.io',
   casinoId: 'your-casino-id',
   privateKey: 'your-private-key',
 });

@@ -16,7 +16,7 @@ import {
 async function main() {
   // Initialize the Discovery Client
   const client = new FareDiscoveryClient({
-    baseUrl: 'https://discovery.fareplay.io',
+    baseUrl: 'https://api.discover.fareplay.io',
     timeout: 30000,
   });
 

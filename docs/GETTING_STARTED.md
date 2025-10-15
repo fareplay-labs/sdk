@@ -44,7 +44,7 @@ Use the Discovery Client to register your casino:
 import { FareDiscoveryClient, createSignedPayload } from '@fareplay/sdk';
 
 const client = new FareDiscoveryClient({
-  baseUrl: 'https://discovery.fareplay.io',
+  baseUrl: 'https://api.discover.fareplay.io',
 });
 
 // Prepare registration data
@@ -79,7 +79,7 @@ Use the Casino Client to send heartbeats and keep your casino's status updated:
 import { FareCasinoClient } from '@fareplay/sdk';
 
 const casinoClient = new FareCasinoClient({
-  baseUrl: 'https://discovery.fareplay.io',
+  baseUrl: 'https://api.discover.fareplay.io',
   casinoId: casino.id,
   privateKey: keypair.privateKey,
 });
@@ -214,7 +214,7 @@ For production use, store sensitive data in environment variables:
 
 ```typescript
 const client = new FareCasinoClient({
-  baseUrl: process.env.DISCOVERY_URL || 'https://discovery.fareplay.io',
+  baseUrl: process.env.DISCOVERY_URL || 'https://api.discover.fareplay.io',
   casinoId: process.env.CASINO_ID!,
   privateKey: process.env.CASINO_PRIVATE_KEY!,
 });

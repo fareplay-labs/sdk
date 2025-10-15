@@ -17,7 +17,7 @@ async function main() {
 
   // Initialize the Casino Client
   const client = new FareCasinoClient({
-    baseUrl: 'https://discovery.fareplay.io',
+    baseUrl: 'https://api.discover.fareplay.io',
     casinoId,
     privateKey: keypair.privateKey,
     timeout: 30000,

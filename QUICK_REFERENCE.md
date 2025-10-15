@@ -35,7 +35,7 @@ const keypair = getKeypairFromPrivateKey(existingPrivateKey);
 
 ```typescript
 const client = new FareDiscoveryClient({
-  baseUrl: 'https://discovery.fareplay.io',
+  baseUrl: 'https://api.discover.fareplay.io',
 });
 ```
 
@@ -97,7 +97,7 @@ const stats = await client.getStats();
 
 ```typescript
 const client = new FareCasinoClient({
-  baseUrl: 'https://discovery.fareplay.io',
+  baseUrl: 'https://api.discover.fareplay.io',
   casinoId: 'your-casino-id',
   privateKey: privateKey,
 });
@@ -233,7 +233,7 @@ const casino = await discoveryClient.registerCasino(signed);
 
 // 4. Start heartbeat
 const casinoClient = new FareCasinoClient({
-  baseUrl: 'https://discovery.fareplay.io',
+  baseUrl: 'https://api.discover.fareplay.io',
   casinoId: casino.id,
   privateKey: keypair.privateKey,
 });
@@ -287,7 +287,7 @@ import {
 ```typescript
 // Custom configuration
 const client = new FareDiscoveryClient({
-  baseUrl: 'https://discovery.fareplay.io',
+  baseUrl: 'https://api.discover.fareplay.io',
   timeout: 30000,     // 30 seconds
   retries: 3,         // 3 retry attempts
   retryDelay: 1000,   // 1 second between retries

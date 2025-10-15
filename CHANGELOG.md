@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.1] - 2025-10-15
+
+### Changed
+- Updated default Discovery Service API endpoint to `https://api.discover.fareplay.io`
+- Updated all documentation and examples to use new API endpoint
+
 ## [1.0.0] - 2025-10-14
 
 ### Added
