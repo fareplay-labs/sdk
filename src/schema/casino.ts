@@ -24,6 +24,13 @@ export const GameTypeSchema = z.enum([
   'rps',
   'bombs',
   'cards',
+  // Additional supported variants
+  'coinFlip',
+  'plinko',
+  'cards_1',
+  'slots_1',
+  'cryptoLaunch',
+  'cryptoLaunch_1',
 ]);
 
 export type GameType = z.infer<typeof GameTypeSchema>;
