@@ -38,10 +38,7 @@ await client.registerCasino({
   publicKey: 'your-solana-public-key',
   metadata: {
     description: 'A fun casino',
-    games: ['slots', 'dice', 'rps'],
-  },
-});
-
+    games: ['slots', 'dice', 'rps']
 // Fetch all casinos
 const casinos = await client.getCasinos();
 ```

@@ -61,7 +61,7 @@ export class FareDiscoveryClient {
 
     // Make the API call
     const response = await this.http.post(
-      '/api/v1/casinos',
+      '/api/casinos/register',
       {
         body: validatedRequest,
         schema: ApiResponseSchema(CasinoMetadataSchema),
@@ -78,12 +78,10 @@ export class FareDiscoveryClient {
   /**
    * Update an existing casino
    * 
-   * @param id - Casino ID
-   * @param request - Casino update request
+   * @param request - Casino update request (casinoId is included in the request body)
    * @returns The updated casino metadata
    */
   async updateCasino(
-    id: string,
     request: CasinoUpdateRequest
   ): Promise<CasinoMetadata> {
     // Validate the request
@@ -91,7 +89,7 @@ export class FareDiscoveryClient {
 
     // Make the API call
     const response = await this.http.patch(
-      `/api/v1/casinos/${id}`,
+      `/api/casinos`,
       {
         body: validatedRequest,
         schema: ApiResponseSchema(CasinoMetadataSchema),
@@ -128,14 +126,19 @@ export class FareDiscoveryClient {
 
     // Make the API call
     const response = await this.http.get(
-      '/api/v1/casinos',
+      '/api/casinos',
       {
         params: Object.keys(params).length > 0 ? params : undefined,
-        schema: ApiResponseSchema(z.array(CasinoMetadataSchema)),
+        schema: ApiResponseSchema(z.object({
+          casinos: z.array(CasinoMetadataSchema),
+          total: z.number(),
+          limit: z.number(),
+          offset: z.number(),
+        })),
       }
     );
 
-    return (response.data ?? []) as CasinoMetadata[];
+    return (response.data?.casinos ?? []) as CasinoMetadata[];
   }
 
   /**
@@ -146,7 +149,7 @@ export class FareDiscoveryClient {
    */
   async getCasino(id: string): Promise<CasinoMetadata> {
     const response = await this.http.get(
-      `/api/v1/casinos/${id}`,
+      `/api/casinos/${id}`,
       {
         schema: ApiResponseSchema(CasinoMetadataSchema),
       }
@@ -165,7 +168,7 @@ export class FareDiscoveryClient {
    * @param id - Casino ID
    */
   async deleteCasino(id: string): Promise<void> {
-    await this.http.delete(`/api/v1/casinos/${id}`);
+    await this.http.delete(`/api/casinos/${id}`);
   }
 
   /**
@@ -176,9 +179,8 @@ export class FareDiscoveryClient {
    */
   async getCasinoByPublicKey(publicKey: string): Promise<CasinoMetadata> {
     const response = await this.http.get(
-      '/api/v1/casinos/by-public-key',
+      `/api/casinos/by-key/${publicKey}`,
       {
-        params: { publicKey },
         schema: ApiResponseSchema(CasinoMetadataSchema),
       }
     );
@@ -213,16 +215,14 @@ export class FareDiscoveryClient {
   async getStats(): Promise<{
     totalCasinos: number;
     onlineCasinos: number;
-    offlineCasinos: number;
-    maintenanceCasinos: number;
+    heartbeatsLast24h: number;
   }> {
-    const response = await this.http.get('/api/v1/casinos/stats', {
+    const response = await this.http.get('/api/casinos/stats', {
       schema: ApiResponseSchema(
         z.object({
           totalCasinos: z.number(),
           onlineCasinos: z.number(),
-          offlineCasinos: z.number(),
-          maintenanceCasinos: z.number(),
+          heartbeatsLast24h: z.number(),
         })
       ),
     });
