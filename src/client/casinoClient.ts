@@ -68,7 +68,7 @@ export class FareCasinoClient {
 
     // Make the API call
     const response = await this.http.post(
-      '/api/casinos/heartbeat',
+      '/v1/casinos/heartbeat',
       {
         body: validatedPayload,
         schema: ApiResponseSchema(HeartbeatResponseSchema),

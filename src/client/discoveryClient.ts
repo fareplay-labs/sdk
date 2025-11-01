@@ -61,7 +61,7 @@ export class FareDiscoveryClient {
 
     // Make the API call
     const response = await this.http.post(
-      '/api/casinos/register',
+      '/v1/casinos/register',
       {
         body: validatedRequest,
         schema: ApiResponseSchema(CasinoMetadataSchema),
@@ -89,7 +89,7 @@ export class FareDiscoveryClient {
 
     // Make the API call
     const response = await this.http.patch(
-      `/api/casinos`,
+      `/v1/casinos`,
       {
         body: validatedRequest,
         schema: ApiResponseSchema(CasinoMetadataSchema),
@@ -126,7 +126,7 @@ export class FareDiscoveryClient {
 
     // Make the API call
     const response = await this.http.get(
-      '/api/casinos',
+      '/v1/casinos',
       {
         params: Object.keys(params).length > 0 ? params : undefined,
         schema: ApiResponseSchema(z.object({
@@ -149,7 +149,7 @@ export class FareDiscoveryClient {
    */
   async getCasino(id: string): Promise<CasinoMetadata> {
     const response = await this.http.get(
-      `/api/casinos/${id}`,
+      `/v1/casinos/${id}`,
       {
         schema: ApiResponseSchema(CasinoMetadataSchema),
       }
@@ -168,7 +168,7 @@ export class FareDiscoveryClient {
    * @param id - Casino ID
    */
   async deleteCasino(id: string): Promise<void> {
-    await this.http.delete(`/api/casinos/${id}`);
+    await this.http.delete(`/v1/casinos/${id}`);
   }
 
   /**
@@ -179,7 +179,7 @@ export class FareDiscoveryClient {
    */
   async getCasinoByPublicKey(publicKey: string): Promise<CasinoMetadata> {
     const response = await this.http.get(
-      `/api/casinos/by-key/${publicKey}`,
+      `/v1/casinos/by-key/${publicKey}`,
       {
         schema: ApiResponseSchema(CasinoMetadataSchema),
       }
@@ -217,7 +217,7 @@ export class FareDiscoveryClient {
     onlineCasinos: number;
     heartbeatsLast24h: number;
   }> {
-    const response = await this.http.get('/api/casinos/stats', {
+    const response = await this.http.get('/v1/casinos/stats', {
       schema: ApiResponseSchema(
         z.object({
           totalCasinos: z.number(),
