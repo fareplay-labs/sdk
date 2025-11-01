@@ -1,6 +1,6 @@
 {
   "name": "@fareplay/sdk",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Official FarePlay SDK for the Fare Protocol ecosystem",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
